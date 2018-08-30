@@ -1,0 +1,18 @@
+---
+- name: PLAY TO ENSURE DECLARED CONFIGURATION EXISTS ON DEVICES
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+#    - debug: var=inventory_hostname
+    - template:
+        src: render_remote.j2
+        dest: "{{ inventory_hostname }}.cfg"
+      when: "'remote' in inventory_hostname"
+
+    - template:
+        src: render_core.j2
+        dest: "{{ inventory_hostname}}.cfg"
+      when: "'core' in inventory_hostname"
