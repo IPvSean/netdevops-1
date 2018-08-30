@@ -1,4 +1,8 @@
 ---
+branches:
+  only:
+    - add_provisioning
+
 services: docker
 
 env:
