@@ -1,0 +1,26 @@
+---
+
+- name: KICK OFF THE TESTS
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: VALIDATE TEST
+      debug:
+
+    - name: PROVISION THE DEV ENV
+      debug:
+        msg: "Pass in user input/PR info to Tower API"
+
+
+- name: UPDATE EC2 INI FILE TO THE NEW INVENTORY
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+
+    - name: FIGURE OUT THE NEW INVENTORY
+      debug:
+        msg: "maybe use lineinfile to update ec2.ini with PR info"
