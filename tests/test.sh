@@ -16,7 +16,6 @@
 #
 # License: MIT
 
-
 # Exit on any individual command failure.
 set -e
 
