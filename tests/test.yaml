@@ -6,24 +6,27 @@
   gather_facts: no
 
   vars:
-    tower_instance: 54.144.88.64
+    tower_instance: "https://54.144.88.64/"
     project_name: ajay-netdevops
     org_name: devops
     job_name: kickoff
-    tower_user: devops
-    tower_pass: devops
+    # tower_user: devops
+    #tower_pass: devops
 
   tasks:
     - name: VALIDATE TEST
       debug:
 
-    - name: KICK OFF A TOWER JOB TEMPLATE
-      tower_job_launch:
-        tower_host: "{{ tower_instance }}"
-        tower_password: "{{ tower_pass }}"
-        tower_username: "{{ tower_user }}"
-        job_template: "{{ job_name }}"
-        tower_verify_ssl: no
+    - name: COLLECT ALL JOB TEMPLATES
+      uri:
+        url: "{{ tower_instance}}api/v2/job_templates/"
+        method: GET
+        user: "{{ tower_user }}"
+        password: "{{ tower_pass }}"
+        return_content: yes
+        validate_certs: no
+      register: output
+
 
     - name: PROVISION THE DEV ENV
       debug:
