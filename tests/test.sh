@@ -15,7 +15,6 @@
 # prior to running tests.
 #
 # License: MIT
-
 # Exit on any individual command failure.
 set -e
 
