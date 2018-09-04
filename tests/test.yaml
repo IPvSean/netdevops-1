@@ -5,9 +5,23 @@
   connection: local
   gather_facts: no
 
+  vars:
+    tower_instance: 54.144.88.64
+    project_name: ajay-netdevops
+    org_name: devops
+    job_name: kickoff
+
   tasks:
     - name: VALIDATE TEST
       debug:
+
+    - name: KICK OFF A TOWER JOB TEMPLATE
+      tower_job_launch:
+        tower_host: "{{ tower_instance }}"
+        tower_password: "{{ tower_pass }}"
+        tower_username: "{{ tower_user }}"
+        job_template: "{{ job_name }}"
+        tower_verify_ssl: no
 
     - name: PROVISION THE DEV ENV
       debug:
