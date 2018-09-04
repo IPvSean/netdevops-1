@@ -1,21 +1,15 @@
----
 branches:
   only:
-    - add_provisioning
-
+  - add_provisioning
 services: docker
-
 env:
+  matrix:
   - distro: centos7
-
+  global:
+    secure: AUVzahm3YEW6B+b4+U6c2GfuZIxUzw0YjlCICLFtZQZoppMxTL/7fzULvzO93rM9LU5dUaN5uZAzotzdHonC++V4DJqPymiAXyskr8VjwJp8WPw2KHXo51jolOOikIuslRxOrn7DjRxMjF2FLWczuaC+TgTQZc0wX1HUhEtAuPpUe4cOmnU8dwH0Cd+z61AiL/uzuIDAiBHo6svRpHNqcTyv41rHH1El9K/2/cISUjR/lFyQ0IN0D0W7fNHwOYNF1VYbGVoyvfWMBtpScqgMu6WLyh+mvdlJyP86mSwm6hZpKXqAOW2AcpKnwidLx6TZceQQ+WM0Fzt673e5KnrPJSnrsYPgv3G/Qf9C0mhK/TvKUJdJOtp3u9yTIAkRrgnAhel+gf6t0YZ6rGplt2sKij5o/SjOTnFghEEnJ9HQlqogxvCVFXmE+hakAM98xQ93UHYY00J+NrPLlE9Kls7StaXManHGUIObesHNdZwbqP8NaRRGex0u8o5js8gKRVFcm88GBZY5juEwQdJ65CbOuldQMcgxxuOjjTJwbWeFusuGwKxC0Px3eUENMs1c9XmclBW5FZghez1O/7eXesLb1uP8qg/IbTR/Cxqct1i1P3uFZI0MXUw400Wl4cQslwFD39ijM7q7efUrr1an4TB0+p6nKhe0uVfkEqzABJ+LPsw=
 script:
-  # Configure test script so we can run extra tests after playbook is run.
-  - export container_id=$(date +%s)
-  - export cleanup=false
-
-  # Download test shim.
-  - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/termlen0/2e05b0682a31aab73a77effe26ea2ee8/raw
-  - chmod +x ${PWD}/tests/test.sh
-
-  # Run tests.
-  - ${PWD}/tests/test.sh
+- export container_id=$(date +%s)
+- export cleanup=false
+- wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/termlen0/2e05b0682a31aab73a77effe26ea2ee8/raw
+- chmod +x ${PWD}/tests/test.sh
+- "${PWD}/tests/test.sh"
