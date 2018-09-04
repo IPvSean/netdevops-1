@@ -17,7 +17,6 @@
 # License: MIT
 # Exit on any individual command failure.
 set -e
-
 # Pretty colors.
 red='\033[0;31m'
 green='\033[0;32m'
