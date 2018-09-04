@@ -10,6 +10,8 @@
     project_name: ajay-netdevops
     org_name: devops
     job_name: kickoff
+    tower_user: devops
+    tower_pass: devops
 
   tasks:
     - name: VALIDATE TEST
